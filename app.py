@@ -1,55 +1,49 @@
 import os
+import time
+import re
+import base64
 import streamlit as st
 from dotenv import load_dotenv
 from groq import Groq
-import base64
-import re
-from groq import RateLimitError, APIStatusError 
-import time, re
+from groq import RateLimitError, APIStatusError
 
 load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
-
 client = Groq(api_key=api_key)
 
 FALLBACK_MODELS = [
-    "coupound-beta",
+    "compound-beta",
+    "compound-beta-mini",
     "mixtral-8x7b-32768",
-    "llama3-70b-8192", 
+    "llama3-70b-8192",
+    "gemma2-9b-it",
+    "deepseek-r1-distill-llama-70b",
 ]
-
 
 def generate_response(messages, model_list=FALLBACK_MODELS, max_wait=45):
     last_error = None
-
     for model in model_list:
         try:
-            response = client.chat.completions.create(
+            resp = client.chat.completions.create(
                 model=model,
                 messages=messages,
                 timeout=max_wait,
-                stream=True
+                stream=False,
             )
-            txt = response.choices[0].message.content
-            txt = re.sub(r"<think>.*?</think>", "", txt, flags=re.I | re.S).strip()
-            return txt, model
+            text = re.sub(r"<think>.*?</think>", "", resp.choices[0].message.content, flags=re.I | re.S).strip()
+            return text, model
         except RateLimitError as e:
-            retry = float(getattr(e,"retry_after",0) or e.headers.get("retry-after",0)or 0)
-            remain = int(e.headers.get("x-ratelimit-remaning-requests",0))
-
+            retry = float(getattr(e, "retry_after", 0) or e.headers.get("retry-after", 0) or 0)
             if retry:
                 time.sleep(min(retry, max_wait))
                 continue
-            else:
-                st.toast(f"{model} daily quota exhausted - switching ...", icon="⚠️")
-                last_error = e
+            st.toast(f"{model} daily quota exhausted – switching …", icon="⚠️")
+            last_error = e
         except APIStatusError as e:
             last_error = e
-
         except Exception as e:
             last_error = e
-
-    raise RuntimeError("ALL configured free-tier model quotas are exhausted.") from last_error
+    raise RuntimeError("All configured free-tier model quotas are exhausted.") from last_error
 
 def set_background(image_file):
     with open(image_file, "rb") as img:
@@ -69,7 +63,6 @@ def set_background(image_file):
     )
 
 def add_chat_styles():
-    """Inject CSS that adds a blurred translucent background to chat bubbles."""
     st.markdown(
         """
         <style>
@@ -80,26 +73,18 @@ def add_chat_styles():
             border-radius: 8px;
             padding: 0.75rem 1rem;
             margin-bottom: 0.5rem;
-            color: #000; /* Ensure text remains dark for readability */
+            color: #000;
             font-size: 1rem;
         }
-        /* Extra space before the first chat bubble to avoid overlap with title */
-        .chat-bubble:first-child {
-            margin-top: 2.5rem;
-        }
-        .chat-bubble.user {
-            border-left: 4px solid #1a73e8;
-        }
-        .chat-bubble.bot {
-            border-left: 4px solid #34a853;
-        }
+        .chat-bubble:first-child { margin-top: 2.5rem; }
+        .chat-bubble.user { border-left: 4px solid #1a73e8; }
+        .chat-bubble.bot { border-left: 4px solid #34a853; }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
 def add_lexend_font():
-    """Import Google Lexend font and apply to all text elements."""
     st.markdown(
         """
         <style>
@@ -113,13 +98,12 @@ def add_lexend_font():
     )
 
 def add_title_style():
-    """Inject CSS for the main title with blur and centering."""
     st.markdown(
         """
         <style>
         .app-title {
             text-align: center;
-            margin: 1rem auto 2rem auto; /* More space below title */
+            margin: 1rem auto 2rem auto;
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -136,12 +120,10 @@ def add_title_style():
     )
 
 st.set_page_config(page_title="AI Chatbot")
-
 set_background("image.png")
 add_chat_styles()
 add_lexend_font()
 add_title_style()
-
 st.markdown("<h1 class='app-title'>🤖 Safwen Chatbot 🤖</h1>", unsafe_allow_html=True)
 
 if "history" not in st.session_state:
@@ -150,24 +132,20 @@ if "history" not in st.session_state:
 user_input = st.chat_input("You:")
 
 if user_input:
-    st.session_state.history.append({"role":"user","content":user_input})
-
+    st.session_state.history.append({"role": "user", "content": user_input})
     try:
-        bot_reply,model_used = generate_response(st.session_state.history)
-    except RateLimitError as e:
+        bot_reply, model_used = generate_response(st.session_state.history)
+    except RuntimeError as e:
         st.error(str(e))
         st.stop()
-
-    st.session_state.history.append({"role":"assistant","content":bot_reply})
-
-    if model_used != "coumpoun-beta":
+    st.session_state.history.append({"role": "assistant", "content": bot_reply})
+    if model_used != "compound-beta":
         st.info(
-             f"Compound-beta’s daily quota is exhausted – "
-             f"reply generated by **{model_used}** instead."
+            f"compound-beta’s daily quota is exhausted – reply generated by **{model_used}** instead."
         )
 
 for turn in st.session_state.history:
-    speaker = "You" if turn["role"] =="user" else "Bot"
+    speaker = "You" if turn["role"] == "user" else "Bot"
     role_class = "user" if turn["role"] == "user" else "bot"
     st.markdown(
         f"<div class='chat-bubble {role_class}'><b>{speaker}:</b> {turn['content']}</div>",
