@@ -25,14 +25,14 @@ def generate_response(user_prompt):
     content = re.sub(r"<think>[\s\S]*?</think>", "", content, flags=re.IGNORECASE).strip()
     return content
 
-def set_background(image_file):
-    with open(image_file, "rb") as img:
-        encoded = base64.b64encode(img.read()).decode()
+def set_background():
+    # Throws KeyError if you forgot to add the secret
+    encoded = st.secrets["BG_IMAGE_BASE64"].replace("\n", "")
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url('data:image/jpeg;base64,{encoded}');
+            background-image: url('data:image/png;base64,{encoded}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
