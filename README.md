@@ -23,6 +23,7 @@ Safwen Chatbot is a minimalist AI chat interface built with Streamlit and powere
 ├── requirements.txt  # Python dependencies
 └── .gitignore        # Git exclusion rules
 ```
+---
 
 ## 📄 License
 
