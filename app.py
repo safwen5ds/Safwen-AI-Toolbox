@@ -145,7 +145,8 @@ user_input = st.chat_input("You:")
 if user_input:
     st.session_state.history.append({"role": "user", "content": user_input})
     try:
-        bot_reply, model_used = generate_response(st.session_state.history)
+        clean_history = [{"role": m["role"], "content": m["content"]} for m in st.session_state.history]
+        bot_reply, model_used = generate_response(clean_history)
     except RuntimeError as e:
         st.error(str(e))
         st.stop()
