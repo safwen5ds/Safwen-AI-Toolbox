@@ -6,10 +6,10 @@ Safwen Chatbot is a minimalist AI chat interface built with Streamlit and powere
 
 ## ✨ Features
 
-- **Conversational AI** – Connects to Groq `compound-beta` model via the official SDK.
+- **Conversational AI** – Connects to Groq `compound-beta` model and other models via the official API.
 - **Stylish Interface** – Custom blurred chat bubbles, Google Lexend font, and full-screen background image.
 - **Session History** – Keeps the conversation visible for the duration of the browser session.
-- **One-Click Deploy** – Ready for Streamlit Community Cloud, Render, Railway, or any Python-friendly host.
+- **One-Click Deploy** – Ready for Streamlit Community Cloud.
 
 ---
 
