@@ -26,7 +26,6 @@ def generate_response(user_prompt):
     return content
 
 def set_background():
-    # Throws KeyError if you forgot to add the secret
     encoded = st.secrets["BG_IMAGE_BASE64"].replace("\n", "")
     st.markdown(
         f"""
@@ -111,7 +110,7 @@ def add_title_style():
 
 st.set_page_config(page_title="AI Chatbot")
 
-set_background("image.png")
+set_background()
 add_chat_styles()
 add_lexend_font()
 add_title_style()
