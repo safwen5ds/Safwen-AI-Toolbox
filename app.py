@@ -111,7 +111,7 @@ def add_title_style():
 
 st.set_page_config(page_title="AI Chatbot")
 
-set_background()
+set_background("image.png")
 add_chat_styles()
 add_lexend_font()
 add_title_style()
