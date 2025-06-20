@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from groq import Groq
 import base64
 import re
-from groq.exceptions import RateLimitError, APIStatusError 
+from groq import RateLimitError, APIStatusError 
 import time, re
 
 load_dotenv()
