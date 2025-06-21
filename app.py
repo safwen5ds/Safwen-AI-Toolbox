@@ -110,6 +110,15 @@ def add_title_style():
             align-items:center;
             gap:.5rem;
             color:#000 !important;  
+            
+        }
+        .app-title .emoji{
+            font-family:
+              "Noto Color Emoji",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Twemoji Mozilla",
+              sans-serif;
         }
         h1.app-title{margin:0 auto;}
         </style>
@@ -121,11 +130,17 @@ add_chat_styles()
 add_fonts_and_overrides()
 add_title_style()
 
-st.markdown("""
-<h1 class="app-title">
-  <span>🤖</span><span>Safwen&nbsp;Chatbot</span><span>🤖</span>
-</h1>
-""", unsafe_allow_html=True)
+st.markdown(
+    """
+    <h1 class="app-title">
+      <span class="emoji">🤖</span>
+      <span>Safwen&nbsp;Chatbot</span>
+      <span class="emoji">🤖</span>
+    </h1>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 if "history" not in st.session_state:
     st.session_state.history = []
