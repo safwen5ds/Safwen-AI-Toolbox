@@ -130,7 +130,7 @@ def add_title_style():
         unsafe_allow_html=True,
     )
 
-st.set_page_config(page_title="AI Chatbot")
+st.set_page_config(page_title="AI Chatbot",page_icon="🤖")
 set_background("image.png")
 add_chat_styles()
 add_lexend_font()
