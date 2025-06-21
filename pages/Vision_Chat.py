@@ -26,10 +26,13 @@ body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
 """, unsafe_allow_html=True)
 st.title("Groq Vision Chat – Llama-4 Scout 17 B")
 
-if "history" not in st.session_state:
-    st.session_state.history = []
+# Use a dedicated session key so Vision chat history is not shared with other pages
+HIST_KEY = "vision_history"
 
-for turn in st.session_state.history:
+if HIST_KEY not in st.session_state:
+    st.session_state[HIST_KEY] = []
+
+for turn in st.session_state[HIST_KEY]:
     with st.chat_message(turn["role"]):
         st.markdown(turn["content"], unsafe_allow_html=True)
 
@@ -44,9 +47,9 @@ if user_text or user_img:
         b64 = encode_image(user_img)
         blocks.append({"type": "image_url", "image_url": {"url": as_data_url(user_img, b64)}})
 
-    st.session_state.history.append({"role": "user", "content": user_text if user_text else "*[image]*"})
+    st.session_state[HIST_KEY].append({"role": "user", "content": user_text if user_text else "*[image]*"})
 
-    messages = [{"role": t["role"], "content": t["content"]} for t in st.session_state.history[:-1]] + [{"role": "user", "content": blocks}]
+    messages = [{"role": t["role"], "content": t["content"]} for t in st.session_state[HIST_KEY][:-1]] + [{"role": "user", "content": blocks}]
 
     streaming = not user_img
     try:
@@ -71,7 +74,7 @@ if user_text or user_img:
             with st.chat_message("assistant"):
                 st.markdown(full)
 
-        st.session_state.history.append({"role": "assistant", "content": full})
+        st.session_state[HIST_KEY].append({"role": "assistant", "content": full})
 
     except RateLimitError:
         st.error("Daily Groq quota exhausted — please try again tomorrow.")

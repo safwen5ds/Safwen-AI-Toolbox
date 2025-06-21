@@ -141,22 +141,24 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Use a page-specific key so that chat history is not shared across the whole app
+HIST_KEY = "chatbot_history"
 
-if "history" not in st.session_state:
-    st.session_state.history = []
+if HIST_KEY not in st.session_state:
+    st.session_state[HIST_KEY] = []
 
 user_msg = st.chat_input("You:")
 if user_msg:
-    st.session_state.history.append({"role":"user","content":user_msg})
+    st.session_state[HIST_KEY].append({"role":"user","content":user_msg})
     try:
-        clean_hist = [{"role":t["role"],"content":t["content"]} for t in st.session_state.history]
+        clean_hist = [{"role":t["role"],"content":t["content"]} for t in st.session_state[HIST_KEY]]
         bot_msg, used_model = generate_response(clean_hist)
     except RuntimeError as e:
         st.error(str(e))
         st.stop()
-    st.session_state.history.append({"role":"assistant","content":bot_msg,"model":used_model})
+    st.session_state[HIST_KEY].append({"role":"assistant","content":bot_msg,"model":used_model})
 
-for turn in st.session_state.history:
+for turn in st.session_state[HIST_KEY]:
     speaker = "You" if turn["role"]=="user" else "Bot"
     role_cls = "user" if turn["role"]=="user" else "bot"
     st.markdown(
