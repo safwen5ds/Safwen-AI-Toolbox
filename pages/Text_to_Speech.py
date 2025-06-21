@@ -28,14 +28,36 @@ st.markdown("""
 body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
     font-family: 'Lexend', sans-serif;
 }
+/* --- bubble background --- */
+h1,
+.input-bubble,
+div[data-baseweb="textarea"] label,
+div[data-baseweb="select"] label{
+    display:inline-block;
+    padding:.4rem 1rem;
+    border-radius:10px;
+    background:rgba(0,0,0,.35);
+    color:#fff;
+    backdrop-filter:blur(8px);
+    margin-bottom:.4rem;
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("Text-to-Speech (Groq + PlayAI) By Safwen Gharbi")
 
+# Custom bubble label for textarea
+st.markdown(
+    """
+    <div class="input-bubble">Enter the text you'd like to hear:</div>
+    """,
+    unsafe_allow_html=True
+)
+
 text_input = st.text_area(
-    "Enter the text you'd like to hear:",
+    "",
     height=180,
-    placeholder="write something"
+    placeholder="write something",
+    label_visibility="collapsed"
 )
 
 EN_VOICES = [

@@ -39,9 +39,30 @@ st.markdown("""
 body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
     font-family: 'Lexend', sans-serif;
 }
+/* --- bubble background style --- */
+h1,
+.input-bubble,
+div[data-baseweb="select"] label,
+div[data-baseweb="textarea"] label{
+    display:inline-block;
+    padding:.4rem 1rem;
+    border-radius:10px;
+    background:rgba(0,0,0,.35);
+    color:#fff;
+    backdrop-filter:blur(8px);
+    margin-bottom:.4rem;
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("Groq Vision Chat – Llama-4 Scout 17 B")
+
+# Custom bubble label for file uploader
+st.markdown(
+    """
+    <div class="input-bubble">image (jpg/jpeg/png)</div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Use a dedicated session key so Vision chat history is not shared with other pages
 HIST_KEY = "vision_history"
@@ -54,7 +75,7 @@ for turn in st.session_state[HIST_KEY]:
         st.markdown(turn["content"], unsafe_allow_html=True)
 
 user_text = st.chat_input("Ask me anything…")
-user_img = st.file_uploader("image (jpg/jpeg/png)", type=["jpg", "jpeg", "png"])
+user_img = st.file_uploader("", type=["jpg", "jpeg", "png"], label_visibility="collapsed")
 
 if user_text or user_img:
     blocks = []
