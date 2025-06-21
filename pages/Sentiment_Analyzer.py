@@ -8,7 +8,7 @@ def get_analyzer():
 analyze = get_analyzer()
 
 st.set_page_config(page_title="Sentiment Aalyzer by Safwen Gharbi",page_icon="🤖")
-# Use Lexend font across this page
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
@@ -47,7 +47,7 @@ div[data-baseweb="textarea"] label{
 """, unsafe_allow_html=True)
 st.title("Real-Time Sentiment Analyzer")
 
-# --- background helper ---
+
 def set_background(img_path="image.png"):
     if not os.path.isfile(img_path):
         return
@@ -63,7 +63,6 @@ def set_background(img_path="image.png"):
 
 set_background("image.png")
 
-# Custom bubble label for textarea
 st.markdown(
     """
     <div class="input-bubble">Paste any neglish text and click <i>Analyze</i></div>

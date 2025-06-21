@@ -5,7 +5,7 @@ from groq import Groq, RateLimitError, APIStatusError
 
 st.set_page_config(page_title="Text-to-Speech",page_icon="🤖")
 
-# --- background ---
+
 def set_background(img_path="image.png"):
     if not os.path.isfile(img_path):
         return
@@ -21,7 +21,7 @@ def set_background(img_path="image.png"):
 
 set_background("image.png")
 
-# Use Lexend font across this page
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
@@ -50,7 +50,7 @@ h1{
 """, unsafe_allow_html=True)
 st.title("Text-to-Speech (Groq + PlayAI) By Safwen Gharbi")
 
-# Custom bubble label for textarea
+
 st.markdown(
     """
     <div class="input-bubble">Enter the text you'd like to hear:</div>

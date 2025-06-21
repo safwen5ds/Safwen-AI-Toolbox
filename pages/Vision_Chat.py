@@ -14,7 +14,6 @@ def get_client():
 
 client = get_client()
 
-# --- set page background ---
 def set_background(img_path="image.png"):
     if not os.path.isfile(img_path):
         return
@@ -28,11 +27,9 @@ def set_background(img_path="image.png"):
         </style>
     """, unsafe_allow_html=True)
 
-# Page config & background
 st.set_page_config(page_title="Groq Vision Chat By Safwen Gharbi",page_icon="🤖")
 set_background("image.png")
 
-# Use Lexend font across this page
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
@@ -69,7 +66,6 @@ div[data-baseweb="textarea"] label{
 """, unsafe_allow_html=True)
 st.title("Groq Vision Chat – Llama-4 Scout 17 B")
 
-# Custom bubble label for file uploader
 st.markdown(
     """
     <div class="input-bubble">image (jpg/jpeg/png)</div>
@@ -77,7 +73,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Use a dedicated session key so Vision chat history is not shared with other pages
 HIST_KEY = "vision_history"
 
 if HIST_KEY not in st.session_state:

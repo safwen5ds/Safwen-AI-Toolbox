@@ -63,7 +63,6 @@ def add_fonts_and_overrides():
         </style>
     """, unsafe_allow_html=True)
 
-# --- lightweight page-specific styles ---
 st.markdown("""
     <style>
     /* center the page title & add blurred dark bubble */
@@ -128,7 +127,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Use a page-specific key so that chat history is not shared across the whole app
+
 HIST_KEY = "chatbot_history"
 
 if HIST_KEY not in st.session_state:
@@ -149,11 +148,10 @@ for turn in st.session_state[HIST_KEY]:
     speaker = "You" if turn["role"]=="user" else "Bot"
     role_cls = "user" if turn["role"]=="user" else "bot"
     if turn["role"] == "user":
-        # user message with black bubble
+
         with st.chat_message("user"):
             st.markdown(f"<div class='user-bubble'>{turn['content']}</div>", unsafe_allow_html=True)
     else:
-        # assistant message with black bubble and inline model tag
         with st.chat_message("assistant"):
             st.markdown(f"<div class='bot-bubble'>{turn['content']}</div>", unsafe_allow_html=True)
             st.markdown(f"<div class='model-tag'>Model: {turn['model']}</div>", unsafe_allow_html=True)
