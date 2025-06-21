@@ -1,6 +1,6 @@
 # 🧩 Safwen AI Toolbox
 
-A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundles a conversational chatbot, vision-enabled image chat, real-time sentiment analysis, and text-to-speech—all powered by Groq's large-language-model API and Hugging Face transformers.
+A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundles a conversational chatbot, vision-enabled image chat, real-time sentiment analysis, and text-to-speech , all powered by Groq's large-language-model API and Hugging Face transformers.
 
 ---
 
