@@ -15,14 +15,23 @@ st.markdown("""
 body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
     font-family: 'Lexend', sans-serif;
 }
-
-/* glassmorphism blur bubble for title and textarea label */
-h1, label{
+/* --- bubble background for title and textarea label --- */
+h1{
     display:inline-block;
-    padding:.45rem .85rem;
+    padding:.4rem 1rem;
     border-radius:10px;
-    backdrop-filter:blur(10px);
-    background:rgba(255,255,255,.25);
+    background:rgba(0,0,0,.35);
+    color:#fff;
+    backdrop-filter:blur(8px);
+}
+/* Target the label that Streamlit generates for the textarea */
+div[data-baseweb="textarea"] > label{
+    display:inline-block;
+    padding:.3rem .9rem;
+    border-radius:8px;
+    background:rgba(0,0,0,.35);
+    color:#fff;
+    backdrop-filter:blur(8px);
 }
 </style>
 """, unsafe_allow_html=True)
