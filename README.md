@@ -10,7 +10,7 @@ A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundle
 - **Stylish Interface** – Custom blurred chat bubbles, Google Lexend font, and full-screen background image.
 - **Session History** – Keeps the conversation visible for the duration of the browser session.
 - **One-Click Deploy** – Ready for Streamlit Community Cloud.
-=======
+
 1. **Chatbot** – Talk with Groq LLMs using automatic model fall-back for free-tier quotas.
 2. **Vision Chat** – Ask questions about any image with llama-4-scout-17b vision capabilities.
 3. **Sentiment Analyzer** – Classify text sentiment in real time with a cached HF pipeline.
