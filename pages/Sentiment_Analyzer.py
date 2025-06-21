@@ -16,7 +16,8 @@ body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
     font-family: 'Lexend', sans-serif;
 }
 /* --- bubble background for title and textarea label --- */
-h1{
+h1,
+.input-bubble{
     display:inline-block;
     padding:.4rem 1rem;
     border-radius:10px;
@@ -62,10 +63,19 @@ def set_background(img_path="image.png"):
 
 set_background("image.png")
 
+# Custom bubble label for textarea
+st.markdown(
+    """
+    <div class="input-bubble">Paste any neglish text and click <i>Analyze</i></div>
+    """,
+    unsafe_allow_html=True
+)
+
 txt = st.text_area(
-    "Paste any neglish text and click *Analyze*",
+    "",
     height=180,
-    placeholder="Type or paste a text"
+    placeholder="Type or paste a text",
+    label_visibility="collapsed"
 )
 
 if st.button("Analyze",use_container_width=True) and txt.strip():
