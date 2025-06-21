@@ -145,7 +145,7 @@ def add_title_style():
         h1.app-title { margin: 0 auto; }
         </style>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=False,
     )
 
 
