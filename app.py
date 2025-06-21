@@ -123,7 +123,7 @@ add_title_style()
 
 st.markdown("""
 <h1 class="app-title">
-  <span>🤖</span><span>Safwen&nbsp;Chatbot</span><span>🤖</span>
+  <span>⚙️</span><span>Safwen&nbsp;Chatbot</span><span>⚙️</span>
 </h1>
 """, unsafe_allow_html=True)
 
