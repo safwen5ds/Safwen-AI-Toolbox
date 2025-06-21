@@ -164,6 +164,17 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+st.markdown(
+    """
+    <style>
+    /* remove the anchor-link icon that appears next to headings */
+    [data-testid="stMarkdownHeadingLink"] {
+        display: none !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 if "history" not in st.session_state:
