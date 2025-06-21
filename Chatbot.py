@@ -51,20 +51,20 @@ def add_chat_styles():
     st.markdown("""
         <style>
         .chat-bubble{{
-            background:#262730;
+            background:#262730!important;
             backdrop-filter:blur(8px);
             -webkit-backdrop-filter:blur(8px);
             border-radius:8px;
             padding:.75rem 1rem;
             margin-bottom:.5rem;
-            color:#fff;
+            color:#fff!important;
             font-size:1rem;
         }}
         .chat-bubble:first-child{{margin-top:2.5rem;}}
         .chat-bubble.user{{border-left:4px solid #1a73e8;}}
         .chat-bubble.bot{{border-left:4px solid #34a853;}}
         .model-tag{{
-            background:#262730;
+            background:#262730!important;
             backdrop-filter:blur(6px);
             -webkit-backdrop-filter:blur(6px);
             border-radius:6px;
@@ -73,7 +73,7 @@ def add_chat_styles():
             display:inline-block;
             margin-top:-.25rem;
             margin-bottom:.75rem;
-            color:#fff;
+            color:#fff!important;
         }}
         </style>
     """, unsafe_allow_html=True)
@@ -100,7 +100,7 @@ def add_title_style():
         .app-title{{
             margin:1.5rem auto 2.5rem auto;
             padding:.75rem 1.5rem;
-            background:#262730;
+            background:#262730!important;
             backdrop-filter:blur(8px);
             -webkit-backdrop-filter:blur(8px);
             border-radius:12px;
@@ -110,7 +110,7 @@ def add_title_style():
             justify-content:center;
             align-items:center;
             gap:.5rem;
-            color:#fff !important;  
+            color:#fff!important;  
             
         }}
         .app-title .emoji{{
