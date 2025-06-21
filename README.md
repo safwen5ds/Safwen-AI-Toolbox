@@ -1,10 +1,6 @@
 # 🧩 Safwen AI Toolbox
 
-<<<<<<< HEAD
-A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundles a conversational chatbot, vision-enabled image chat, real-time sentiment analysis, and text-to-speech , all powered by Groq's large-language-model API and Hugging Face transformers.
-=======
 A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundles a conversational chatbot, vision-enabled image chat, real-time sentiment analysis, and text-to-speech, all powered by Groq's large-language-model API and Hugging Face transformers.
->>>>>>> 29fa199 (new pages and fix1)
 
 ---
 
@@ -14,15 +10,6 @@ A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundle
 - **Stylish Interface** – Custom blurred chat bubbles, Google Lexend font, and full-screen background image.
 - **Session History** – Keeps the conversation visible for the duration of the browser session.
 - **One-Click Deploy** – Ready for Streamlit Community Cloud.
-<<<<<<< HEAD
-
-1. **Chatbot** – Talk with Groq LLMs using automatic model fall-back for free-tier quotas.
-2. **Vision Chat** – Ask questions about any image with llama-4-scout-17b vision capabilities.
-3. **Sentiment Analyzer** – Classify text sentiment in real time with a cached HF pipeline.
-4. **Text-to-Speech** – Generate natural WAV audio in English 🇬🇧 or Arabic 🇸🇦 with PlayAI voices.
-5. **Modern UI** – Glassmorphism chat bubbles, Google Lexend font, and a full-screen background image.
-=======
->>>>>>> 29fa199 (new pages and fix1)
 
 ---
 
