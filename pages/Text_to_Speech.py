@@ -3,7 +3,7 @@ from pathlib import Path
 import streamlit as st
 from groq import Groq, RateLimitError, APIStatusError
 
-st.set_page_config(page_title="Text-to-Speech",page_icon="🤖")
+st.set_page_config(page_title="Text-to-Speech By Safwen Gharbi",page_icon="🤖")
 
 
 def set_background(img_path="image.png"):
