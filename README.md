@@ -6,7 +6,6 @@ A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundle
 
 ## ✨ Features
 
-<<<<<<< HEAD
 - **Conversational AI** – Connects to Groq `compound-beta` model and other models via the official API.
 - **Stylish Interface** – Custom blurred chat bubbles, Google Lexend font, and full-screen background image.
 - **Session History** – Keeps the conversation visible for the duration of the browser session.
@@ -17,7 +16,6 @@ A multi-tool, glass-morphism-styled AI interface built with Streamlit. It bundle
 3. **Sentiment Analyzer** – Classify text sentiment in real time with a cached HF pipeline.
 4. **Text-to-Speech** – Generate natural WAV audio in English 🇬🇧 or Arabic 🇸🇦 with PlayAI voices.
 5. **Modern UI** – Glassmorphism chat bubbles, Google Lexend font, and a full-screen background image.
->>>>>>> 4088cf4 (new pages)
 
 ---
 
