@@ -1,10 +1,26 @@
-import io, time, tempfile
+import io, time, tempfile, base64, os
 from pathlib import Path
 import streamlit as st
 from groq import Groq, RateLimitError, APIStatusError
-import os
 
 st.set_page_config(page_title="Text-to-Speech",page_icon="🤖")
+
+# --- background ---
+def set_background(img_path="image.png"):
+    if not os.path.isfile(img_path):
+        return
+    with open(img_path, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode()
+    st.markdown(f"""
+    <style>
+    .stApp {{
+        background: url("data:image/png;base64,{b64}") center/cover no-repeat;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+
+set_background("image.png")
+
 # Use Lexend font across this page
 st.markdown("""
 <style>

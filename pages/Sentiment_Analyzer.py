@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st, base64, os
 from transformers import pipeline
 
 @st.cache_resource(show_spinner="Loading sentiment model...")
@@ -18,6 +18,22 @@ body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
 </style>
 """, unsafe_allow_html=True)
 st.title("Real-Time Sentiment Analyzer")
+
+# --- background helper ---
+def set_background(img_path="image.png"):
+    if not os.path.isfile(img_path):
+        return
+    with open(img_path, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode()
+    st.markdown(f"""
+    <style>
+    .stApp {{
+        background: url("data:image/png;base64,{b64}") center/cover no-repeat;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+
+set_background("image.png")
 
 txt = st.text_area(
     "Paste any neglish text and click *Analyze*",

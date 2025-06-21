@@ -14,7 +14,24 @@ def get_client():
 
 client = get_client()
 
+# --- set page background ---
+def set_background(img_path="image.png"):
+    if not os.path.isfile(img_path):
+        return
+    with open(img_path, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode()
+    st.markdown(f"""
+        <style>
+        .stApp {{
+            background: url("data:image/png;base64,{b64}") center/cover no-repeat;
+        }}
+        </style>
+    """, unsafe_allow_html=True)
+
+# Page config & background
 st.set_page_config(page_title="Groq Vision Chat By Safwen Gharbi",page_icon="🤖")
+set_background("image.png")
+
 # Use Lexend font across this page
 st.markdown("""
 <style>
