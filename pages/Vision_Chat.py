@@ -52,6 +52,18 @@ div[data-baseweb="textarea"] label{
     backdrop-filter:blur(8px);
     margin-bottom:.4rem;
 }
+/* --- chat bubbles like Chatbot page --- */
+.bot-bubble,
+.user-bubble{
+    background:#000;
+    color:#fff;
+    padding:.75rem 1rem;
+    border-radius:8px;
+    margin-bottom:.25rem;
+}
+/* transparent chat container background */
+.stChatMessage{background:transparent !important;}
+.stChatMessage .stMarkdown{background:transparent !important; padding:0 !important; border:none !important;}
 </style>
 """, unsafe_allow_html=True)
 st.title("Groq Vision Chat – Llama-4 Scout 17 B")
@@ -72,7 +84,8 @@ if HIST_KEY not in st.session_state:
 
 for turn in st.session_state[HIST_KEY]:
     with st.chat_message(turn["role"]):
-        st.markdown(turn["content"], unsafe_allow_html=True)
+        cls = "user-bubble" if turn["role"]=="user" else "bot-bubble"
+        st.markdown(f"<div class='{cls}'>{turn['content']}</div>", unsafe_allow_html=True)
 
 user_text = st.chat_input("Ask me anything…")
 user_img = st.file_uploader("", type=["jpg", "jpeg", "png"], label_visibility="collapsed")
@@ -106,11 +119,11 @@ if user_text or user_img:
                 for chunk in resp:
                     tok = chunk.choices[0].delta.content or ""
                     full += tok
-                    slot.markdown(full)
+                    slot.markdown(f"<div class='bot-bubble'>{full}</div>", unsafe_allow_html=True)
         else:
             full = resp.choices[0].message.content
             with st.chat_message("assistant"):
-                st.markdown(full)
+                st.markdown(f"<div class='bot-bubble'>{full}</div>", unsafe_allow_html=True)
 
         st.session_state[HIST_KEY].append({"role": "assistant", "content": full})
 

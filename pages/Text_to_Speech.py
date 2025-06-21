@@ -41,6 +41,10 @@ div[data-baseweb="select"] label{
     backdrop-filter:blur(8px);
     margin-bottom:.4rem;
 }
+/* bigger space below page title */
+h1{
+    margin-bottom:1.5rem;
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("Text-to-Speech (Groq + PlayAI) By Safwen Gharbi")
