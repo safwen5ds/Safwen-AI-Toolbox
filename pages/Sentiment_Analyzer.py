@@ -33,6 +33,15 @@ div[data-baseweb="textarea"] > label{
     color:#fff;
     backdrop-filter:blur(8px);
 }
+/* broaden: apply to any label inside the container */
+div[data-baseweb="textarea"] label{
+    display:inline-block;
+    padding:.3rem .9rem;
+    border-radius:8px;
+    background:rgba(0,0,0,.35);
+    color:#fff;
+    backdrop-filter:blur(8px);
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("Real-Time Sentiment Analyzer")
