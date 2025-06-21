@@ -68,14 +68,16 @@ st.markdown("""
     <style>
     /* center the page title & add blurred dark bubble */
     h1.app-title{
-        text-align:center; margin:2rem auto 2.5rem auto;
-        display:inline-block;
+        margin:2rem auto 2.5rem auto;
+        width:max-content;
+        display:block;           /* allow margin auto centering */
         padding:.75rem 1.25rem;
         border-radius:12px;
         background:rgba(0,0,0,0.45);
         backdrop-filter:blur(6px);
         -webkit-backdrop-filter:blur(6px);
         color:#fff;
+        text-align:center;
     }
     /* ensure emojis are rendered in color */
     .emoji{
@@ -99,8 +101,15 @@ st.markdown("""
     /* small tag under each bot message showing model */
     .model-tag{
         font-size:.9rem;
-        color:#ccc;
+        background:#000;
+        color:#fff;
+        padding:.25rem .6rem;
+        border-radius:6px;
+        display:inline-block;
     }
+    /* remove default background of Streamlit chat messages */
+    .stChatMessage{background:transparent !important;}
+    .stChatMessage .stMarkdown{background:transparent !important; padding:0 !important; border:none !important;}
     </style>
 """, unsafe_allow_html=True)
 
