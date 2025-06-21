@@ -8,6 +8,15 @@ def get_analyzer():
 analyze = get_analyzer()
 
 st.set_page_config(page_title="Sentiment Aalyzer by Safwen Gharbi",page_icon="🤖")
+# Use Lexend font across this page
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
+    font-family: 'Lexend', sans-serif;
+}
+</style>
+""", unsafe_allow_html=True)
 st.title("Real-Time Sentiment Analyzer")
 
 txt = st.text_area(

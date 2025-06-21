@@ -50,7 +50,7 @@ def set_background(img_path):
 def add_chat_styles():
     st.markdown("""
         <style>
-        .chat-bubble{
+        .chat-bubble{{
             background:rgba(255,255,255,.25);
             backdrop-filter:blur(8px);
             -webkit-backdrop-filter:blur(8px);
@@ -59,11 +59,11 @@ def add_chat_styles():
             margin-bottom:.5rem;
             color:#000;
             font-size:1rem;
-        }
-        .chat-bubble:first-child{margin-top:2.5rem;}
-        .chat-bubble.user{border-left:4px solid #1a73e8;}
-        .chat-bubble.bot{border-left:4px solid #34a853;}
-        .model-tag{
+        }}
+        .chat-bubble:first-child{{margin-top:2.5rem;}}
+        .chat-bubble.user{{border-left:4px solid #1a73e8;}}
+        .chat-bubble.bot{{border-left:4px solid #34a853;}}
+        .model-tag{{
             background:rgba(255,255,255,.25);
             backdrop-filter:blur(6px);
             -webkit-backdrop-filter:blur(6px);
@@ -73,7 +73,7 @@ def add_chat_styles():
             display:inline-block;
             margin-top:-.25rem;
             margin-bottom:.75rem;
-        }
+        }}
         </style>
     """, unsafe_allow_html=True)
 
@@ -82,21 +82,21 @@ def add_fonts_and_overrides():
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
         body, p, h1, h2, h3, h4, h5, h6,
-        .chat-bubble, .model-tag, input, textarea, button{
+        .chat-bubble, .model-tag, input, textarea, button{{
             font-family:'Lexend',sans-serif;
-        }
-        [data-testid="collapsed-control"] span{
+        }}
+        [data-testid="collapsed-control"] span{{
             font-family:'Material Symbols Outlined'!important;
             font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;
-        }
-        [data-testid="stMarkdownHeadingLink"]{display:none!important;}
+        }}
+        [data-testid="stMarkdownHeadingLink"]{{display:none!important;}}
         </style>
     """, unsafe_allow_html=True)
 
 def add_title_style():
     st.markdown("""
         <style>
-        .app-title{
+        .app-title{{
             margin:1.5rem auto 2.5rem auto;
             padding:.75rem 1.5rem;
             background:rgba(255,255,255,.25);
@@ -111,16 +111,16 @@ def add_title_style():
             gap:.5rem;
             color:#000 !important;  
             
-        }
-        .app-title .emoji{
+        }}
+        .app-title .emoji{{
             font-family:
               "Noto Color Emoji",
               "Apple Color Emoji",
               "Segoe UI Emoji",
               "Twemoji Mozilla",
               sans-serif;
-        }
-        h1.app-title{margin:0 auto;}
+        }}
+        h1.app-title{{margin:0 auto;}}
         </style>
     """, unsafe_allow_html=True)
 

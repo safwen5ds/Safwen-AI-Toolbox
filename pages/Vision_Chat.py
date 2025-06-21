@@ -15,6 +15,15 @@ def get_client():
 client = get_client()
 
 st.set_page_config(page_title="Groq Vision Chat By Safwen Gharbi",page_icon="🤖")
+# Use Lexend font across this page
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
+    font-family: 'Lexend', sans-serif;
+}
+</style>
+""", unsafe_allow_html=True)
 st.title("Groq Vision Chat – Llama-4 Scout 17 B")
 
 if "history" not in st.session_state:
