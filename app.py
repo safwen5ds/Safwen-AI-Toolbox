@@ -101,8 +101,19 @@ def add_lexend_font():
     st.markdown(
         """
         <style>
+        /* load Lexend */
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
-        * { font-family: 'Lexend', sans-serif !important; }
+
+        /* apply Lexend to normal text elements only */
+        body, p, h1, h2, h3, h4, h5, h6, .chat-bubble, .model-tag, input, textarea, button {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        /* restore Material Symbols for the sidebar toggle arrow */
+        [data-testid="collapsed-control"] span {
+            font-family: 'Material Symbols Outlined' !important;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
         </style>
         """,
         unsafe_allow_html=True,
