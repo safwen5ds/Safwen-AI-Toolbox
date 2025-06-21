@@ -66,14 +66,30 @@ def add_fonts_and_overrides():
 # --- lightweight page-specific styles ---
 st.markdown("""
     <style>
-    /* center the page title */
-    h1.app-title{ text-align:center; margin-top:2rem; }
+    /* center the page title & add blurred dark bubble */
+    h1.app-title{
+        text-align:center; margin:2rem auto 2.5rem auto;
+        display:inline-block;
+        padding:.75rem 1.25rem;
+        border-radius:12px;
+        background:rgba(0,0,0,0.45);
+        backdrop-filter:blur(6px);
+        -webkit-backdrop-filter:blur(6px);
+        color:#fff;
+    }
     /* ensure emojis are rendered in color */
     .emoji{
         font-family:"Noto Color Emoji","Apple Color Emoji","Segoe UI Emoji","Twemoji Mozilla",sans-serif;
     }
-    /* black bubble for bot replies */
+    /* black bubble for chat replies */
     .bot-bubble{
+        background:#000;
+        color:#fff;
+        padding:.75rem 1rem;
+        border-radius:8px;
+        margin-bottom:.25rem;
+    }
+    .user-bubble{
         background:#000;
         color:#fff;
         padding:.75rem 1rem;
@@ -124,8 +140,9 @@ for turn in st.session_state[HIST_KEY]:
     speaker = "You" if turn["role"]=="user" else "Bot"
     role_cls = "user" if turn["role"]=="user" else "bot"
     if turn["role"] == "user":
-        # default user message
-        st.chat_message("user").markdown(f"**{speaker}:** {turn['content']}")
+        # user message with black bubble
+        with st.chat_message("user"):
+            st.markdown(f"<div class='user-bubble'>{turn['content']}</div>", unsafe_allow_html=True)
     else:
         # assistant message with black bubble and inline model tag
         with st.chat_message("assistant"):
