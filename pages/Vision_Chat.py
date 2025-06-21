@@ -51,6 +51,7 @@ div[data-baseweb="textarea"] label{
     color:#fff;
     backdrop-filter:blur(8px);
     margin-bottom:.4rem;
+    margin-top:1rem;
 }
 /* --- chat bubbles like Chatbot page --- */
 .bot-bubble,

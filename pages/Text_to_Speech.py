@@ -40,10 +40,11 @@ div[data-baseweb="select"] label{
     color:#fff;
     backdrop-filter:blur(8px);
     margin-bottom:.4rem;
+    margin-top:1rem;
 }
 /* bigger space below page title */
 h1{
-    margin-bottom:1.5rem;
+    margin-bottom:2rem;
 }
 </style>
 """, unsafe_allow_html=True)
