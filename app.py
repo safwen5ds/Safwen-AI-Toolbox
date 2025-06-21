@@ -124,17 +124,24 @@ def add_title_style():
         """
         <style>
         .app-title {
-            text-align: center;
+            /* visual frame  */
             margin: 1rem auto 2rem auto;
-            background: rgba(255, 255, 255, 0.25);
+            padding: .75rem 1.25rem;
+            background: rgba(255,255,255,.25);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: 0.75rem 1.25rem;
             border-radius: 12px;
-            width: fit-content;
             font-size: 2rem;
+            width: fit-content;
             position: relative;
             z-index: 1;
+
+            /* ⬇️  new centring rules */
+            display: inline-flex;          /* shrink to content */
+            align-items: center;           /* vertical centring */
+            justify-content: center;       /* horizontal centring */
+            gap: .4rem;                    /* space between emoji and words */
+            text-align: center;            /* keep multiline text centred */
         }
         </style>
         """,
@@ -146,7 +153,7 @@ set_background("image.png")
 add_chat_styles()
 add_lexend_font()
 add_title_style()
-st.markdown("🤖<h1 class='app-title'> Safwen Chatbot </h1>🤖", unsafe_allow_html=True)
+st.markdown("<h1 class='app-title'>🤖 Safwen Chatbot 🤖</h1>", unsafe_allow_html=True)
 
 if "history" not in st.session_state:
     st.session_state.history = []
