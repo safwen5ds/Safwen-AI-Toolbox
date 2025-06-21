@@ -14,7 +14,7 @@ def get_client():
 
 client = get_client()
 
-st.set_page_config(page_title="Groq Vision Chat By Safwen Gharbi")
+st.set_page_config(page_title="Groq Vision Chat By Safwen Gharbi",page_icon="🤖")
 st.title("Groq Vision Chat – Llama-4 Scout 17 B")
 
 if "history" not in st.session_state:

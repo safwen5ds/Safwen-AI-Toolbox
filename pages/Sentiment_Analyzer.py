@@ -7,7 +7,7 @@ def get_analyzer():
 
 analyze = get_analyzer()
 
-st.set_page_config(page_title="Sentiment Aalyzer by Safwen Gharbi")
+st.set_page_config(page_title="Sentiment Aalyzer by Safwen Gharbi",page_icon="🤖")
 st.title("Real-Time Sentiment Analyzer")
 
 txt = st.text_area(

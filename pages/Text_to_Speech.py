@@ -4,7 +4,7 @@ import streamlit as st
 from groq import Groq, RateLimitError, APIStatusError
 import os
 
-st.set_page_config(page_title="Text-to-Speech")
+st.set_page_config(page_title="Text-to-Speech",page_icon="🤖")
 st.title("Text-to-Speech (Groq + PlayAI) By Safwen Gharbi")
 
 text_input = st.text_area(
