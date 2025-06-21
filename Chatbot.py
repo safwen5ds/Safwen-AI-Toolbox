@@ -47,36 +47,6 @@ def set_background(img_path):
         </style>
     """, unsafe_allow_html=True)
 
-def add_chat_styles():
-    st.markdown("""
-        <style>
-        .chat-bubble{{
-            background:#262730;
-            backdrop-filter:blur(8px);
-            -webkit-backdrop-filter:blur(8px);
-            border-radius:8px;
-            padding:.75rem 1rem;
-            margin-bottom:.5rem;
-            color:#fff;
-            font-size:1rem;
-        }}
-        .chat-bubble:first-child{{margin-top:2.5rem;}}
-        .chat-bubble.user{{border-left:4px solid #1a73e8;}}
-        .chat-bubble.bot{{border-left:4px solid #34a853;}}
-        .model-tag{{
-            background:#262730;
-            backdrop-filter:blur(6px);
-            -webkit-backdrop-filter:blur(6px);
-            border-radius:6px;
-            font-size:1rem;
-            padding:.25rem .6rem;
-            display:inline-block;
-            margin-top:-.25rem;
-            margin-bottom:.75rem;
-        }}
-        </style>
-    """, unsafe_allow_html=True)
-
 def add_fonts_and_overrides():
     st.markdown("""
         <style>
@@ -93,42 +63,9 @@ def add_fonts_and_overrides():
         </style>
     """, unsafe_allow_html=True)
 
-def add_title_style():
-    st.markdown("""
-        <style>
-        .app-title{{
-            margin:1.5rem auto 2.5rem auto;
-            padding:.75rem 1.5rem;
-            background:#262730;
-            backdrop-filter:blur(8px);
-            -webkit-backdrop-filter:blur(8px);
-            border-radius:12px;
-            font-size:2.4rem;
-            width:max-content+3;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            gap:.5rem;
-            color:#fff !important;  
-            
-        }}
-        .app-title .emoji{{
-            font-family:
-              "Noto Color Emoji",
-              "Apple Color Emoji",
-              "Segoe UI Emoji",
-              "Twemoji Mozilla",
-              sans-serif;
-        }}
-        h1.app-title{{margin:0 auto;}}
-        </style>
-    """, unsafe_allow_html=True)
-
 st.set_page_config(page_title="AI Chatbot", page_icon="🤖")
 set_background("image.png")
-add_chat_styles()
 add_fonts_and_overrides()
-add_title_style()
 
 st.markdown(
     """
@@ -161,12 +98,6 @@ if user_msg:
 for turn in st.session_state[HIST_KEY]:
     speaker = "You" if turn["role"]=="user" else "Bot"
     role_cls = "user" if turn["role"]=="user" else "bot"
-    st.markdown(
-        f"<div class='chat-bubble {role_cls}'><b>{speaker}:</b> {turn['content']}</div>",
-        unsafe_allow_html=True
-    )
+    st.chat_message(turn["role"]).markdown(f"**{speaker}:** {turn['content']}")
     if turn["role"]=="assistant":
-        st.markdown(
-            f"<span class='model-tag'>Model: {turn['model']}</span>",
-            unsafe_allow_html=True
-        )
+        st.markdown(f"*Model: {turn['model']}*")
