@@ -146,7 +146,7 @@ set_background("image.png")
 add_chat_styles()
 add_lexend_font()
 add_title_style()
-st.markdown("<h1 class='app-title'>🤖 Safwen Chatbot 🤖</h1>", unsafe_allow_html=True)
+st.markdown("🤖<h1 class='app-title'> Safwen Chatbot </h1>🤖", unsafe_allow_html=True)
 
 if "history" not in st.session_state:
     st.session_state.history = []
