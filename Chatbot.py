@@ -70,6 +70,8 @@ st.markdown("""
         margin:2rem auto 2.5rem auto;
         width:max-content;
         display:block;           /* allow margin auto centering */
+        /* responsive font size: scales with viewport but stays within reasonable bounds */
+        font-size:clamp(1.25rem,5vw,2.25rem);
         padding:.75rem 1.25rem;
         border-radius:12px;
         background:rgba(0,0,0,0.45);
