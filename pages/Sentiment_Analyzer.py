@@ -15,6 +15,15 @@ st.markdown("""
 body, p, h1, h2, h3, h4, h5, h6, input, textarea, button{
     font-family: 'Lexend', sans-serif;
 }
+
+/* glassmorphism blur bubble for title and textarea label */
+h1, label{
+    display:inline-block;
+    padding:.45rem .85rem;
+    border-radius:10px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,.25);
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("Real-Time Sentiment Analyzer")
