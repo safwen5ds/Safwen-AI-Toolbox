@@ -109,7 +109,7 @@ def add_title_style():
             justify-content:center;
             align-items:center;
             gap:.5rem;
-            color:#000;   
+            color:#000 !important;  
         }
         h1.app-title{margin:0 auto;}
         </style>
