@@ -2,8 +2,5 @@ openai
 streamlit>=1.32
 python-dotenv>=1.0
 Groq>=0.5
-# --- NLP sentiment page ---
-# Latest stable releases as of 30 May 2025
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.3.0+cpu
-transformers==4.52.4
+transformers>=4.41
+torch==2.5.1+cpu 
