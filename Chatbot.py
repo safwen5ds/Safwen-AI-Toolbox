@@ -75,6 +75,11 @@ def add_chat_styles():
             margin-bottom:.75rem;
             color:#fff!important;
         }}
+        .appview-container .main .block-container{{
+            background:#262730CC;
+            padding:2rem 2.5rem;
+            border-radius:16px;
+        }}
         </style>
     """, unsafe_allow_html=True)
 
