@@ -124,36 +124,47 @@ def add_title_style():
         """
         <style>
         .app-title {
-            /* visual frame  */
-            margin: 1rem auto 2rem auto;
-            padding: .75rem 1.25rem;
+            /* frame */
+            margin: 1.5rem auto 2.5rem auto;      /* auto → centred on page */
+            padding: .75rem 1.5rem;
             background: rgba(255,255,255,.25);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 12px;
-            font-size: 2rem;
-            width: fit-content;
-            position: relative;
+            font-size: 2.4rem;
+            width: max-content;                   /* wrap snugly around content */
             z-index: 1;
 
-            /* ⬇️  new centring rules */
-            display: inline-flex;          /* shrink to content */
-            align-items: center;           /* vertical centring */
-            justify-content: center;       /* horizontal centring */
-            gap: .4rem;                    /* space between emoji and words */
-            text-align: center;            /* keep multiline text centred */
+            /* centring the line itself */
+            display: flex;                        /* real flex container */
+            align-items: center;                  /* vertical centring */
+            justify-content: center;              /* horizontal centring */
+            gap: .5rem;                           /* space between bits */
         }
+        /* remove default h-margin that <h1> brings */
+        h1.app-title { margin: 0 auto; }
         </style>
         """,
         unsafe_allow_html=True,
     )
+
 
 st.set_page_config(page_title="AI Chatbot",page_icon="🤖")
 set_background("image.png")
 add_chat_styles()
 add_lexend_font()
 add_title_style()
-st.markdown("<h1 class='app-title'>🤖 Safwen Chatbot 🤖</h1>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <h1 class="app-title">
+        <span>🤖</span>
+        <span>Safwen&nbsp;Chatbot</span>
+        <span>🤖</span>
+    </h1>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 if "history" not in st.session_state:
     st.session_state.history = []
