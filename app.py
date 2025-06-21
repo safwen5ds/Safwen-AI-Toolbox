@@ -104,7 +104,7 @@ def add_title_style():
             -webkit-backdrop-filter:blur(8px);
             border-radius:12px;
             font-size:2.4rem;
-            width:max-content;
+            width:max-content+3;
             display:flex;
             justify-content:center;
             align-items:center;
